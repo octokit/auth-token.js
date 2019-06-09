@@ -1,0 +1,72 @@
+{
+  "name": "@octokit/auth-token.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.0-development",
+  "description": "Octokit library implementing the token authentication strategy for browsers and Node.js",
+  "main": "index.js",
+  "scripts": {
+    "build": "pack build",
+    "test": "jest --coverage"
+  },
+  "repository": "https://github.com/octokit/auth-token.js",
+  "keywords": [
+    "github",
+    "octokit",
+    "authentication",
+    "api"
+  ],
+  "author": "Gregor Martynus (https://github.com/gr2m)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/octokit/auth-token.js/issues"
+  },
+  "homepage": "https://github.com/octokit/auth-token.js#readme",
+  "devDependencies": {
+    "@pika/pack": "^0.3.7",
+    "@pika/plugin-build-node": "^0.4.0",
+    "@pika/plugin-build-web": "^0.4.0",
+    "@pika/plugin-bundle-web": "^0.4.0",
+    "@pika/plugin-ts-standard-pkg": "^0.4.0",
+    "@types/jest": "^24.0.13",
+    "jest": "^24.8.0",
+    "pika-plugin-unpkg-field": "^1.1.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.1",
+    "semantic-release": "^15.13.12"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "coverageThreshold": {
+      "global": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-bundle-web",
+        {
+          "browser": true
+        }
+      ],
+      [
+        "pika-plugin-unpkg-field"
+      ]
+    ]
+  }
+}

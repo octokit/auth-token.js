@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.com/octokit/auth-token.js.svg?branch=master)](https://travis-ci.com/octokit/auth-token.js)
 [![Greenkeeper](https://badges.greenkeeper.io/octokit/auth-token.js.svg)](https://greenkeeper.io/)
 
-`@octokit/auth-token` is the simplest of GitHub’s authentication strategies.
+`@octokit/auth-token` is the simplest of [GitHub’s authentication strategies](https://github.com/octokit/auth.js).
 
 A string is passed to the `createTokenAuth` function which returns the async `auth` function.
 

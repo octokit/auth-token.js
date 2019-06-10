@@ -1,5 +1,5 @@
 {
-  "name": "@octokit/auth-token.js",
+  "name": "@octokit/auth-token",
   "publishConfig": {
     "access": "public"
   },

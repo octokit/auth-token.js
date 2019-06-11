@@ -4,7 +4,7 @@
     "access": "public"
   },
   "version": "0.0.0-development",
-  "description": "Octokit library implementing the token authentication strategy for browsers and Node.js",
+  "description": "Token authentication for browsers and Node.js",
   "main": "index.js",
   "scripts": {
     "build": "pack build",

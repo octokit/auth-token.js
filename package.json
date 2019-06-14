@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/octokit/auth-token.js#readme",
   "devDependencies": {
-    "@pika/pack": "^0.3.7",
+    "@pika/pack": "^0.4.0",
     "@pika/plugin-build-node": "^0.4.0",
     "@pika/plugin-build-web": "^0.4.0",
     "@pika/plugin-bundle-web": "^0.4.0",

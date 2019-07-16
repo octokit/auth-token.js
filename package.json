@@ -5,7 +5,6 @@
   },
   "version": "0.0.0-development",
   "description": "Token authentication for browsers and Node.js",
-  "main": "index.js",
   "scripts": {
     "build": "pack build",
     "test": "jest --coverage"

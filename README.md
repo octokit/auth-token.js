@@ -1,6 +1,6 @@
 # auth-token.js
 
-> Token authentication for browsers and Node.js
+> GitHub API token authentication for browsers and Node.js
 
 [![@latest](https://img.shields.io/npm/v/@octokit/auth-token.svg)](https://www.npmjs.com/package/@octokit/auth-token)
 [![Build Status](https://travis-ci.com/octokit/auth-token.js.svg?branch=master)](https://travis-ci.com/octokit/auth-token.js)

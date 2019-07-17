@@ -1,4 +1,5 @@
 import { auth } from "./auth";
+import { hook } from "./hook";
 import { Token } from "./types";
 
 export function createTokenAuth(token: Token) {
@@ -10,5 +11,8 @@ export function createTokenAuth(token: Token) {
       "[@octokit/auth-token] Token passed to createTokenAuth is not a string"
     );
   }
-  return auth.bind(null, token);
+
+  return Object.assign(auth.bind(null, token), {
+    hook: hook.bind(null, token)
+  });
 }

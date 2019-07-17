@@ -23,17 +23,20 @@
   },
   "homepage": "https://github.com/octokit/auth-token.js#readme",
   "devDependencies": {
+    "@octokit/request": "^5.0.1",
     "@pika/pack": "^0.4.0",
     "@pika/plugin-build-node": "^0.4.0",
     "@pika/plugin-build-web": "^0.4.0",
     "@pika/plugin-bundle-web": "^0.4.0",
     "@pika/plugin-ts-standard-pkg": "^0.4.0",
+    "@types/fetch-mock": "^7.3.1",
     "@types/jest": "^24.0.13",
+    "fetch-mock": "^7.3.7",
     "jest": "^24.8.0",
     "pika-plugin-unpkg-field": "^1.1.0",
+    "semantic-release": "^15.13.12",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.5.1",
-    "semantic-release": "^15.13.12"
+    "typescript": "^3.5.1"
   },
   "jest": {
     "preset": "ts-jest",

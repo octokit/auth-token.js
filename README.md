@@ -8,38 +8,58 @@
 
 `@octokit/auth-token` is the simplest of [GitHub’s authentication strategies](https://github.com/octokit/auth.js).
 
-A string is passed to the `createTokenAuth` function which returns the async `auth` function.
+It is useful if you want to support multiple authentication strategies, as it’s API is compatible with its sibling packages for [basic](https://github.com/octokit/auth-basic.js), [GitHub App](https://github.com/octokit/auth-app.js) and [OAuth app](https://github.com/octokit/auth.js) authentication.
 
-The `auth` function validates the passed token and resolves with the correct `authorization` header.
+<!-- toc -->
 
 ## Usage
 
-```js
-import { createTokenAuth } from "@octokit/auth-token";
-import { request } from "@octokit/request";
+<table>
+<tbody valign=top align=left>
+<tr><th>
+Browsers
+</th><td width=100%>
 
-(async () => {
-  const auth = createTokenAuth("1234567890abcdef1234567890abcdef12345678");
-  const authentication = await auth();
-  // {
-  //   type: 'token',
-  //   token: '1234567890abcdef1234567890abcdef12345678',
-  //   tokenType: 'oauth',
-  //   headers: {
-  //     authorization: 'token 1234567890abcdef1234567890abcdef12345678'
-  //   }
-  // }
+Load `@octokit/auth-token` directly from [cdn.pika.dev](https://cdn.pika.dev)
 
-  // `authentication.headers` can be directly passed to a request
-  const result = await request("GET /orgs/:org/repos", {
-    headers: authentication.headers,
-    org: "octokit",
-    type: "private"
-  });
-})();
+```html
+<script type="module">
+  import { createBasicAuth } from "https://cdn.pika.dev/@octokit/auth-token";
+</script>
 ```
 
-## `createTokenAuth(token)`
+</td></tr>
+<tr><th>
+Node
+</th><td>
+
+Install with <code>npm install @octokit/auth-token</code>
+
+```js
+const { createBasicAuth } = require("@octokit/auth-token");
+// or: import { createBasicAuth } from "@octokit/auth-token";
+```
+
+</td></tr>
+</tbody>
+</table>
+
+```js
+import { createTokenAuth } from "@octokit/auth-token";
+
+const auth = createTokenAuth("1234567890abcdef1234567890abcdef12345678");
+const authentication = await auth();
+// {
+//   type: 'token',
+//   token: '1234567890abcdef1234567890abcdef12345678',
+//   tokenType: 'oauth',
+//   headers: {
+//     authorization: 'token 1234567890abcdef1234567890abcdef12345678'
+//   }
+// }
+```
+
+## `createTokenAuth(token) options`
 
 The `createTokenAuth` method accepts a single argument of type string, which is the token. The passed token can be one of the following:
 
@@ -51,18 +71,20 @@ The `createTokenAuth` method accepts a single argument of type string, which is 
 Examples
 
 ```js
-// Personal/OAuth access token
+// Personal access token or OAuth access token
 createTokenAuth("1234567890abcdef1234567890abcdef12345678");
 
 // Installation access token or GitHub Action token
 createTokenAuth("v1.d3d433526f780fbcc3129004e2731b3904ad0b86");
 ```
 
-It returns the asynchronous `auth()` method.
+## `auth()` options
 
-## `auth()`
+The `auth()` method has no options.
 
-The `auth()` method has no options. It returns the authentication object.
+## `auth()` result
+
+The async `auth()` method resolves with the authentication object.
 
 ## Authentication object
 
@@ -111,37 +133,42 @@ The `auth()` method has no options. It returns the authentication object.
         <code>string</code>
       </th>
       <td>
-        <code>"oauth" for personal access tokens and OAuth tokens, or "installation" for installation access tokens</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <code>headers</code>
-      </th>
-      <th>
-        <code>object</code>
-      </th>
-      <td>
-        <code>{ authorization } </code> - value for the "Authorization" header.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <code>query</code>
-      </th>
-      <th>
-        <code>object</code>
-      </th>
-      <td>
-        <code>{}</code> - not used
+        Can be either <code>"oauth"</code> for personal access tokens and OAuth tokens, or <code>"installation"</code> for installation access tokens (includes <code>GITHUB_TOKEN</code> provided to GitHub Actions)
       </td>
     </tr>
   </tbody>
 </table>
 
+## `auth.hook(request, route, options)` or `auth.hook(request, options)`
+
+`auth.hook()` hooks directly into the request life cycle. It authenticates the request using the provided token.
+
+The `request` option is an instance of [`@octokit/request`](https://github.com/octokit/request.js#readme). The `route`/`options` parameters are the same as for the [`request()` method](https://github.com/octokit/request.js#request).
+
+`auth.hook()` can be called directly to send an authenticated request
+
+```js
+const { data: authorizations } = await auth.hook(
+  request,
+  "GET /authorizations"
+);
+```
+
+Or it can be passed as option to [`request()`](https://github.com/octokit/request.js#request).
+
+```js
+const requestWithAuth = request.defaults({
+  request: {
+    hook: auth.hook
+  }
+});
+
+const { data: authorizations } = await requestWithAuth("GET /authorizations");
+```
+
 ## Find more information
 
-`createTokenAuth` does not send any requests, it only transforms the provided token string into an authentication object.
+`auth()` does not send any requests, it only transforms the provided token string into an authentication object.
 
 Here is a list of things you can do to retrieve further information
 
@@ -150,55 +177,45 @@ Here is a list of things you can do to retrieve further information
 Note that this does not work for installations. There is no way to retrieve permissions based on an installation access tokens.
 
 ```js
-import { createTokenAuth } from "@octokit/auth-token";
-import { request } from "@octokit/request";
-
 const TOKEN = "1234567890abcdef1234567890abcdef12345678";
 
-(async () => {
-  const auth = createTokenAuth(TOKEN);
-  const authentication = await auth();
+const auth = createTokenAuth(TOKEN);
+const authentication = await auth();
 
-  const response = await request("HEAD /", {
-    headers: authentication.headers
-  });
-  const scopes = response.headers["x-oauth-scopes"].split(/,\s+/);
+const response = await request("HEAD /", {
+  headers: authentication.headers
+});
+const scopes = response.headers["x-oauth-scopes"].split(/,\s+/);
 
-  if (scopes.length) {
-    console.log(
-      `"${TOKEN}" has ${scopes.length} scopes enabled: ${scopes.join(", ")}`
-    );
-  } else {
-    console.log(`"${TOKEN}" has no scopes enabled`);
-  }
-})();
+if (scopes.length) {
+  console.log(
+    `"${TOKEN}" has ${scopes.length} scopes enabled: ${scopes.join(", ")}`
+  );
+} else {
+  console.log(`"${TOKEN}" has no scopes enabled`);
+}
 ```
 
 ### Find out if token is a personal access token or if it belongs to an OAuth app
 
 ```js
-import { createTokenAuth } from "@octokit/auth-token";
-import { request } from "@octokit/request";
-
 const TOKEN = "1234567890abcdef1234567890abcdef12345678";
 
-(async () => {
-  const auth = createTokenAuth(TOKEN);
-  const authentication = await auth();
+const auth = createTokenAuth(TOKEN);
+const authentication = await auth();
 
-  const response = await request("HEAD /", {
-    headers: authentication.headers
-  });
-  const clientId = response.headers["x-oauth-client-id"];
+const response = await request("HEAD /", {
+  headers: authentication.headers
+});
+const clientId = response.headers["x-oauth-client-id"];
 
-  if (clientId) {
-    console.log(
-      `"${token}" is an OAuth token, its app’s client_id is ${clientId}.`
-    );
-  } else {
-    console.log(`"${token}" is a personal access token`);
-  }
-})();
+if (clientId) {
+  console.log(
+    `"${token}" is an OAuth token, its app’s client_id is ${clientId}.`
+  );
+} else {
+  console.log(`"${token}" is a personal access token`);
+}
 ```
 
 ### Find out what permissions are enabled for a repository
@@ -206,51 +223,43 @@ const TOKEN = "1234567890abcdef1234567890abcdef12345678";
 Note that the `permissions` key is not set when authenticated using an installation access token.
 
 ```js
-import { createTokenAuth } from "@octokit/auth-token";
-import { request } from "@octokit/request";
-
 const TOKEN = "1234567890abcdef1234567890abcdef12345678";
 
-(async () => {
-  const auth = createTokenAuth(TOKEN);
-  const authentication = await auth();
+const auth = createTokenAuth(TOKEN);
+const authentication = await auth();
 
-  const response = await request("GET /repos/:owner/:repo", {
-    owner: 'octocat',
-    repo: 'hello-world'
-    headers: authentication.headers
-  });
+const response = await request("GET /repos/:owner/:repo", {
+  owner: 'octocat',
+  repo: 'hello-world'
+  headers: authentication.headers
+});
 
-  console.log(response.data.permissions)
-  // {
-  //   admin: true,
-  //   push: true,
-  //   pull: true
-  // }
-})();
+console.log(response.data.permissions)
+// {
+//   admin: true,
+//   push: true,
+//   pull: true
+// }
 ```
 
 ### Use token for git operations
 
-Both OAuth and installation access tokens can be used for git operations. However when using with an installation, [the token must be prefixed with `x-access-token`](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#http-based-git-access-by-an-installation).
+Both OAuth and installation access tokens can be used for git operations. However, when using with an installation, [the token must be prefixed with `x-access-token`](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#http-based-git-access-by-an-installation).
+
+This example is using the [`execa`](https://github.com/sindresorhus/execa) package to run a `git push` command.
 
 ```js
-import { createTokenAuth } from "@octokit/auth-token";
-import { request } from "execa";
-
 const TOKEN = "1234567890abcdef1234567890abcdef12345678";
 
-(async () => {
-  const auth = createTokenAuth(TOKEN);
-  const { token, tokenType } = await auth();
-  const tokenWithPrefix =
-    tokenType === "installation" ? `x-access-token:${token}` : token;
+const auth = createTokenAuth(TOKEN);
+const { token, tokenType } = await auth();
+const tokenWithPrefix =
+  tokenType === "installation" ? `x-access-token:${token}` : token;
 
-  const repositoryUrl = `https://${tokenWithPrefix}@github.com/octocat/hello-world.git`;
+const repositoryUrl = `https://${tokenWithPrefix}@github.com/octocat/hello-world.git`;
 
-  const { stdout } = await execa("git", ["push", repositoryUrl]);
-  console.log(stdout);
-})();
+const { stdout } = await execa("git", ["push", repositoryUrl]);
+console.log(stdout);
 ```
 
 ## License

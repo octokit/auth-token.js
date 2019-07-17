@@ -1,3 +1,6 @@
+import { request } from "@octokit/request";
+import fetchMock, { MockMatcherFunction } from "fetch-mock";
+
 import { createTokenAuth } from "../src/index";
 
 test("README example", async () => {
@@ -53,4 +56,32 @@ test("token is not a string", async () => {
       /token passed to createTokenAuth is not a string/i
     );
   }
+});
+
+test('auth.hook(request, "GET /user")', async () => {
+  const expectedRequestHeaders = {
+    accept: "application/vnd.github.v3+json",
+    authorization: "token 1234567890abcdef1234567890abcdef12345678",
+    "user-agent": "test"
+  };
+
+  const matchGetUser: MockMatcherFunction = (url, { body, headers }) => {
+    expect(url).toEqual("https://api.github.com/user");
+    expect(headers).toStrictEqual(expectedRequestHeaders);
+    return true;
+  };
+
+  const requestMock = request.defaults({
+    headers: {
+      "user-agent": "test"
+    },
+    request: {
+      fetch: fetchMock.sandbox().getOnce(matchGetUser, { id: 123 })
+    }
+  });
+
+  const { hook } = createTokenAuth("1234567890abcdef1234567890abcdef12345678");
+  const { data } = await hook(requestMock, "GET /user");
+
+  expect(data).toStrictEqual({ id: 123 });
 });

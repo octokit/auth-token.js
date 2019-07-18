@@ -78,13 +78,9 @@ createTokenAuth("1234567890abcdef1234567890abcdef12345678");
 createTokenAuth("v1.d3d433526f780fbcc3129004e2731b3904ad0b86");
 ```
 
-## `auth()` options
+## `auth()`
 
-The `auth()` method has no options.
-
-## `auth()` result
-
-The async `auth()` method resolves with the authentication object.
+The `auth()` method has no options. It returns a promise which resolves with the the authentication object.
 
 ## Authentication object
 

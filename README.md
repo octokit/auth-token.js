@@ -45,18 +45,12 @@ const { createTokenAuth } = require("@octokit/auth-token");
 </table>
 
 ```js
-import { createTokenAuth } from "@octokit/auth-token";
-
 const auth = createTokenAuth("1234567890abcdef1234567890abcdef12345678");
 const authentication = await auth();
 // {
 //   type: 'token',
 //   token: '1234567890abcdef1234567890abcdef12345678',
-//   tokenType: 'oauth',
-//   headers: {
-//     authorization: 'token 1234567890abcdef1234567890abcdef12345678'
-//   }
-// }
+//   tokenType: 'oauth'
 ```
 
 ## `createTokenAuth(token) options`

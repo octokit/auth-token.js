@@ -24,7 +24,7 @@ Load `@octokit/auth-token` directly from [cdn.pika.dev](https://cdn.pika.dev)
 
 ```html
 <script type="module">
-  import { createBasicAuth } from "https://cdn.pika.dev/@octokit/auth-token";
+  import { createTokenAuth } from "https://cdn.pika.dev/@octokit/auth-token";
 </script>
 ```
 
@@ -36,8 +36,8 @@ Node
 Install with <code>npm install @octokit/auth-token</code>
 
 ```js
-const { createBasicAuth } = require("@octokit/auth-token");
-// or: import { createBasicAuth } from "@octokit/auth-token";
+const { createTokenAuth } = require("@octokit/auth-token");
+// or: import { createTokenAuth } from "@octokit/auth-token";
 ```
 
 </td></tr>

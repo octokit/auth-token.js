@@ -22,15 +22,6 @@ jobs:
       script: npm test
     - node_js: 12
       script: npm test
-    - node_js: lts/*
-      env: build test
-      script: npm run build
-    - node_js: lts/*
-      env: bundle size
-      script:
-        - npm run build
-        - npx terser pkg/dist-web/index.bundled.js --output pkg/dist-web/index.bundled.min.js --compress --mangle
-        - npx bundlesize --files pkg/dist-web/index.bundled.min.js --max-size 600B
 
     # release stage: run semantic release & update the docs
     - stage: release

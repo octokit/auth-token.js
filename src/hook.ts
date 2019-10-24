@@ -1,26 +1,25 @@
-import { request as Request } from "@octokit/request";
-
 import {
   AnyResponse,
-  Defaults,
-  Endpoint,
-  Parameters,
+  EndpointDefaults,
+  EndpointOptions,
+  RequestInterface,
+  RequestParameters,
   Route,
   Token
 } from "./types";
 
 export async function hook(
   token: Token,
-  request: typeof Request,
-  route: Route | Endpoint,
-  parameters?: Parameters
+  request: RequestInterface,
+  route: Route | EndpointOptions,
+  parameters?: RequestParameters
 ): Promise<AnyResponse> {
-  const endpoint: Defaults = request.endpoint.merge(
+  const endpoint: EndpointDefaults = request.endpoint.merge(
     route as string,
     parameters
   );
 
   endpoint.headers.authorization = `token ${token}`;
 
-  return request(endpoint as Endpoint);
+  return request(endpoint as EndpointOptions);
 }

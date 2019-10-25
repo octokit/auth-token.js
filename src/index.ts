@@ -1,8 +1,13 @@
 import { auth } from "./auth";
 import { hook } from "./hook";
-import { Token } from "./types";
+import {
+  AuthInterface,
+  EndpointOptions,
+  RequestInterface,
+  Token
+} from "./types";
 
-export function createTokenAuth(token: Token) {
+export function createTokenAuth(token: Token): AuthInterface {
   if (!token) {
     throw new Error("[@octokit/auth-token] No token passed to createTokenAuth");
   }

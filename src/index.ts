@@ -1,11 +1,6 @@
 import { auth } from "./auth";
 import { hook } from "./hook";
-import {
-  AuthInterface,
-  EndpointOptions,
-  RequestInterface,
-  Token
-} from "./types";
+import { AuthInterface, Token } from "./types";
 
 export function createTokenAuth(token: Token): AuthInterface {
   if (!token) {

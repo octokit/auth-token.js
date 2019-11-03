@@ -1,6 +1,12 @@
 import { auth } from "./auth";
 import { hook } from "./hook";
-import { StrategyInterface, Token } from "./types";
+import { StrategyInterface, Token, Authentication } from "./types";
+
+export type Types = {
+  StrategyOptions: Token;
+  AuthOptions: never;
+  Authentication: Authentication;
+};
 
 export const createTokenAuth: StrategyInterface = function createTokenAuth(
   token: Token

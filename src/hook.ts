@@ -8,6 +8,8 @@ import {
   Token
 } from "./types";
 
+import { withAuthorizationPrefix } from "./with-authorization-prefix";
+
 export async function hook(
   token: Token,
   request: RequestInterface,
@@ -19,7 +21,7 @@ export async function hook(
     parameters
   );
 
-  endpoint.headers.authorization = `token ${token}`;
+  endpoint.headers.authorization = withAuthorizationPrefix(token);
 
   return request(endpoint as EndpointOptions);
 }

@@ -1,7 +1,11 @@
 import * as OctokitTypes from "@octokit/types";
 
 export type AnyResponse = OctokitTypes.OctokitResponse<any>;
-export type AuthInterface = OctokitTypes.AuthInterface;
+export type StrategyInterface = OctokitTypes.StrategyInterface<
+  [Token],
+  [],
+  Authentication
+>;
 export type EndpointDefaults = OctokitTypes.EndpointDefaults;
 export type EndpointOptions = OctokitTypes.EndpointOptions;
 export type RequestParameters = OctokitTypes.RequestParameters;
@@ -20,6 +24,12 @@ export type InstallationTokenAuthentication = {
   tokenType: "installation";
   token: Token;
 };
+export type AppAuthentication = {
+  type: "token";
+  tokenType: "app";
+  token: Token;
+};
 export type Authentication =
   | OAuthTokenAuthentication
-  | InstallationTokenAuthentication;
+  | InstallationTokenAuthentication
+  | AppAuthentication;

@@ -26,6 +26,7 @@
     "@octokit/types": "^2.0.0"
   },
   "devDependencies": {
+    "@octokit/core": "^2.2.0",
     "@octokit/request": "^5.3.0",
     "@pika/pack": "^0.5.0",
     "@pika/plugin-build-node": "^0.8.1",

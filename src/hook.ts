@@ -16,6 +16,10 @@ export async function hook(
   route: Route | EndpointOptions,
   parameters?: RequestParameters
 ): Promise<AnyResponse> {
+  // If hookMethod is `@octokit/request`, then use its `.endpoint` method so that its
+  // defaults are inherrited. But if no `.endpoint` method is set, it most likely means
+  // that the hook was not passed as first hook to `octokit.hook.wrap("request", hook)`,
+  // in which case `hookMethod` is a pre-bound method without the .endpoint key.
   const endpoint: EndpointDefaults =
     "endpoint" in hookMethod
       ? hookMethod.endpoint.merge(route as string, parameters)

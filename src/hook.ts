@@ -12,16 +12,16 @@ import { withAuthorizationPrefix } from "./with-authorization-prefix";
 
 export async function hook(
   token: Token,
-  request: RequestInterface,
+  hookMethod: RequestInterface | Function,
   route: Route | EndpointOptions,
   parameters?: RequestParameters
 ): Promise<AnyResponse> {
-  const endpoint: EndpointDefaults = request.endpoint.merge(
-    route as string,
-    parameters
-  );
+  const endpoint: EndpointDefaults =
+    "endpoint" in hookMethod
+      ? hookMethod.endpoint.merge(route as string, parameters)
+      : (route as EndpointDefaults);
 
   endpoint.headers.authorization = withAuthorizationPrefix(token);
 
-  return request(endpoint as EndpointOptions);
+  return hookMethod(endpoint as EndpointOptions);
 }

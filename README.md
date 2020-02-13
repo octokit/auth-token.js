@@ -12,6 +12,20 @@ It is useful if you want to support multiple authentication strategies, as it’
 
 <!-- toc -->
 
+- [Usage](#usage)
+- [`createTokenAuth(token) options`](#createtokenauthtoken-options)
+- [`auth()`](#auth)
+- [Authentication object](#authentication-object)
+- [`auth.hook(request, route, options)` or `auth.hook(request, options)`](#authhookrequest-route-options-or-authhookrequest-options)
+- [Find more information](#find-more-information)
+  - [Find out what scopes are enabled for oauth tokens](#find-out-what-scopes-are-enabled-for-oauth-tokens)
+  - [Find out if token is a personal access token or if it belongs to an OAuth app](#find-out-if-token-is-a-personal-access-token-or-if-it-belongs-to-an-oauth-app)
+  - [Find out what permissions are enabled for a repository](#find-out-what-permissions-are-enabled-for-a-repository)
+  - [Use token for git operations](#use-token-for-git-operations)
+- [License](#license)
+
+<!-- tocstop -->
+
 ## Usage
 
 <table>

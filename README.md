@@ -4,7 +4,7 @@
 
 [![@latest](https://img.shields.io/npm/v/@octokit/auth-token.svg)](https://www.npmjs.com/package/@octokit/auth-token)
 [![Build Status](https://github.com/octokit/auth-token.js/workflows/Test/badge.svg)](https://github.com/octokit/auth-token.js/actions?query=workflow%3ATest)
-[![Greenkeeper](https://badges.greenkeeper.io/octokit/auth-token.js.svg)](https://greenkeeper.io/)
+
 
 `@octokit/auth-token` is the simplest of [GitHub’s authentication strategies](https://github.com/octokit/auth.js).
 

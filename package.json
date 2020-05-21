@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/octokit/auth-token.js#readme",
   "dependencies": {
-    "@octokit/types": "^2.0.0"
+    "@octokit/types": "^4.0.1"
   },
   "devDependencies": {
     "@octokit/core": "^2.2.0",

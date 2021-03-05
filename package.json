@@ -9,7 +9,7 @@
     "build": "pika build",
     "test": "jest --coverage"
   },
-  "repository": "https://github.com/octokit/auth-token.js",
+  "repository": "github:octokit/auth-token.js",
   "keywords": [
     "github",
     "octokit",
@@ -18,10 +18,6 @@
   ],
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/octokit/auth-token.js/issues"
-  },
-  "homepage": "https://github.com/octokit/auth-token.js#readme",
   "dependencies": {
     "@octokit/types": "^6.0.3"
   },

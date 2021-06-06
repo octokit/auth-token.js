@@ -8,6 +8,7 @@
   "scripts": {
     "build": "pika build",
     "test": "jest --coverage",
+    "pretest": "npm run -s lint",
     "lint": "prettier --check '{src,test}/**/*.{ts,md}' '*.md' package.json",
     "lint:fix": "prettier --write '{src,test}/**/*.{ts,md}' '*.md' package.json"
   },

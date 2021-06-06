@@ -7,7 +7,9 @@
   "description": "GitHub API token authentication for browsers and Node.js",
   "scripts": {
     "build": "pika build",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "lint": "prettier --check '{src,test}/**/*.{ts,md}' '*.md' package.json",
+    "lint:fix": "prettier --write '{src,test}/**/*.{ts,md}' '*.md' package.json"
   },
   "repository": "github:octokit/auth-token.js",
   "keywords": [

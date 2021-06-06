@@ -11,6 +11,6 @@ export async function auth(token: Token): Promise<Authentication> {
   return {
     type: "token",
     token: token,
-    tokenType
+    tokenType,
   };
 }

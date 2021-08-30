@@ -55,7 +55,7 @@ test("no token", async () => {
     // @ts-ignore
     const auth = createTokenAuth();
     throw new Error("Should not resolve");
-  } catch (error) {
+  } catch (error: any) {
     expect(error.message).toMatch(/no token passed to createTokenAuth/i);
   }
 });
@@ -65,7 +65,7 @@ test("token is not a string", async () => {
     // @ts-ignore
     const auth = createTokenAuth({});
     throw new Error("Should not resolve");
-  } catch (error) {
+  } catch (error: any) {
     expect(error.message).toMatch(
       /token passed to createTokenAuth is not a string/i
     );

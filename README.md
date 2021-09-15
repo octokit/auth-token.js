@@ -83,7 +83,7 @@ Examples
 createTokenAuth("1234567890abcdef1234567890abcdef12345678");
 
 // Installation access token or GitHub Action token
-createTokenAuth("v1.d3d433526f780fbcc3129004e2731b3904ad0b86");
+createTokenAuth("v1.1234567890abcdef1234567890abcdef12345678");
 ```
 
 ## `auth()`

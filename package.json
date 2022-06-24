@@ -6,7 +6,7 @@
   "version": "0.0.0-development",
   "description": "GitHub API token authentication for browsers and Node.js",
   "scripts": {
-    "build": "pika build",
+    "build": "pika-pack build",
     "test": "jest --coverage",
     "pretest": "npm run -s lint",
     "lint": "prettier --check '{src,test}/**/*.{ts,md}' '*.md' package.json",

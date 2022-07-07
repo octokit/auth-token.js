@@ -70,7 +70,10 @@
         "@pika/plugin-ts-standard-pkg"
       ],
       [
-        "@pika/plugin-build-node"
+        "@pika/plugin-build-node",
+        {
+          "minNodeVersion": "14"
+        }
       ],
       [
         "@pika/plugin-build-web"
@@ -81,5 +84,8 @@
     "extends": [
       "github>octokit/.github"
     ]
+  },
+  "engines": {
+    "node": ">= 14"
   }
 }

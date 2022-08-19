@@ -14,19 +14,18 @@ jobs:
     strategy:
       matrix:
         node_version:
-          - 10
-          - 12
           - 14
           - 16
+          - 18
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
       - name: Setup Node v${{ matrix.node_version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3
         with:
           node-version: ${{ matrix.node_version }}
           cache: npm
-      - uses: actions/cache@v2
+      - uses: actions/cache@a7c34adf76222e77931dedbf4a45b2e4648ced19 # tag=v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -39,8 +38,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: test_matrix
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+      - uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3
         with:
           node-version: 16
           cache: npm

@@ -23,12 +23,6 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           cache: npm
-      - uses: actions/cache@0ff05979343fa0bc49c99a4fea5dae9f0964e94f
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - run: npm ci
       - run: npm test --ignore-scripts
   test:

@@ -205,9 +205,7 @@ const TOKEN = "ghp_PersonalAccessToken01245678900000000";
 const auth = createTokenAuth(TOKEN);
 const authentication = await auth();
 
-const response = await request("HEAD /", {
-  headers: authentication.headers,
-});
+const response = await request("HEAD /");
 const scopes = response.headers["x-oauth-scopes"].split(/,\s+/);
 
 if (scopes.length) {
@@ -227,9 +225,7 @@ const TOKEN = "ghp_PersonalAccessToken01245678900000000";
 const auth = createTokenAuth(TOKEN);
 const authentication = await auth();
 
-const response = await request("HEAD /", {
-  headers: authentication.headers,
-});
+const response = await request("HEAD /");
 const clientId = response.headers["x-oauth-client-id"];
 
 if (clientId) {
@@ -254,7 +250,6 @@ const authentication = await auth();
 const response = await request("GET /repos/{owner}/{repo}", {
   owner: 'octocat',
   repo: 'hello-world'
-  headers: authentication.headers
 });
 
 console.log(response.data.permissions)

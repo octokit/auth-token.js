@@ -248,11 +248,11 @@ const auth = createTokenAuth(TOKEN);
 const authentication = await auth();
 
 const response = await request("GET /repos/{owner}/{repo}", {
-  owner: 'octocat',
-  repo: 'hello-world'
+  owner: "octocat",
+  repo: "hello-world",
 });
 
-console.log(response.data.permissions)
+console.log(response.data.permissions);
 // {
 //   admin: true,
 //   push: true,

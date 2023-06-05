@@ -1,6 +1,6 @@
 import { auth } from "./auth";
 import { hook } from "./hook";
-import { StrategyInterface, Token, Authentication } from "./types";
+import type { StrategyInterface, Token, Authentication } from "./types";
 
 export type Types = {
   StrategyOptions: Token;

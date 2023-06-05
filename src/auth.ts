@@ -1,4 +1,4 @@
-import { Token, Authentication } from "./types";
+import type { Token, Authentication } from "./types";
 
 const REGEX_IS_INSTALLATION_LEGACY = /^v1\./;
 const REGEX_IS_INSTALLATION = /^ghs_/;

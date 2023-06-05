@@ -21,13 +21,11 @@
   ],
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
-  "dependencies": {
-    "@octokit/types": "^9.0.0"
-  },
   "devDependencies": {
     "@octokit/core": "^4.0.0",
     "@octokit/request": "^6.0.0",
     "@octokit/tsconfig": "^1.0.2",
+    "@octokit/types": "^9.2.3",
     "@types/fetch-mock": "^7.3.1",
     "@types/jest": "^29.0.0",
     "esbuild": "^0.17.19",

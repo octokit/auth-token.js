@@ -1,7 +1,7 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "emitDeclerarionOnly": false
+    "emitDeclarationOnly": false,
     "noEmit": true,
     "verbatimModuleSyntax": false
   },

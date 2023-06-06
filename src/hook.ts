@@ -1,4 +1,4 @@
-import {
+import type {
   AnyResponse,
   EndpointDefaults,
   EndpointOptions,

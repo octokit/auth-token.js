@@ -1,11 +1,8 @@
 {
-  "extends": "@octokit/tsconfig",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "esModuleInterop": true,
-    "declaration": true,
-    "outDir": "pkg/dist-types",
-    "emitDeclarationOnly": true,
-    "sourceMap": true,
+    "emitDeclerarionOnly": false
+    "noEmit": true,
     "verbatimModuleSyntax": false
   },
   "include": ["src/**/*"]

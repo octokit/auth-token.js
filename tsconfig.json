@@ -6,7 +6,6 @@
     "outDir": "pkg/dist-types",
     "emitDeclarationOnly": true,
     "sourceMap": true,
-    "verbatimModuleSyntax": true
   },
   "include": ["src/**/*"]
 }

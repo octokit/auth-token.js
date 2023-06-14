@@ -33,11 +33,11 @@ It is useful if you want to support multiple authentication strategies, as it’
 Browsers
 </th><td width=100%>
 
-Load `@octokit/auth-token` directly from [cdn.skypack.dev](https://cdn.skypack.dev)
+Load `@octokit/auth-token` directly from [esm.sh](https://esm.sh)
 
 ```html
 <script type="module">
-  import { createTokenAuth } from "https://cdn.skypack.dev/@octokit/auth-token";
+  import { createTokenAuth } from "https://esm.sh/@octokit/auth-token";
 </script>
 ```
 

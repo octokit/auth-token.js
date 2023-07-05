@@ -173,7 +173,7 @@ The `request` option is an instance of [`@octokit/request`](https://github.com/o
 ```js
 const { data: authorizations } = await auth.hook(
   request,
-  "GET /authorizations",
+  "GET /authorizations"
 );
 ```
 
@@ -210,7 +210,7 @@ const scopes = response.headers["x-oauth-scopes"].split(/,\s+/);
 
 if (scopes.length) {
   console.log(
-    `"${TOKEN}" has ${scopes.length} scopes enabled: ${scopes.join(", ")}`,
+    `"${TOKEN}" has ${scopes.length} scopes enabled: ${scopes.join(", ")}`
   );
 } else {
   console.log(`"${TOKEN}" has no scopes enabled`);
@@ -230,7 +230,7 @@ const clientId = response.headers["x-oauth-client-id"];
 
 if (clientId) {
   console.log(
-    `"${token}" is an OAuth token, its app’s client_id is ${clientId}.`,
+    `"${token}" is an OAuth token, its app’s client_id is ${clientId}.`
   );
 } else {
   console.log(`"${token}" is a personal access token`);

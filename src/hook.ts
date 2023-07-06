@@ -14,11 +14,11 @@ export async function hook(
   token: Token,
   request: RequestInterface,
   route: Route | EndpointOptions,
-  parameters?: RequestParameters
+  parameters?: RequestParameters,
 ): Promise<AnyResponse> {
   const endpoint: EndpointDefaults = request.endpoint.merge(
     route as string,
-    parameters
+    parameters,
   );
 
   endpoint.headers.authorization = withAuthorizationPrefix(token);

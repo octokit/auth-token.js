@@ -9,7 +9,7 @@ export type Types = {
 };
 
 export const createTokenAuth: StrategyInterface = function createTokenAuth(
-  token: Token
+  token: Token,
 ) {
   if (!token) {
     throw new Error("[@octokit/auth-token] No token passed to createTokenAuth");
@@ -17,7 +17,7 @@ export const createTokenAuth: StrategyInterface = function createTokenAuth(
 
   if (typeof token !== "string") {
     throw new Error(
-      "[@octokit/auth-token] Token passed to createTokenAuth is not a string"
+      "[@octokit/auth-token] Token passed to createTokenAuth is not a string",
     );
   }
 

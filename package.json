@@ -22,7 +22,7 @@
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
   "devDependencies": {
-    "@octokit/request": "^7.0.0",
+    "@octokit/request": "^8.0.1",
     "@octokit/tsconfig": "^2.0.0",
     "@octokit/types": "^11.0.0",
     "@types/fetch-mock": "^7.3.1",

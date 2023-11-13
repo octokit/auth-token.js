@@ -14,10 +14,10 @@ export async function auth(token: Token): Promise<Authentication> {
   const tokenType = isApp
     ? "app"
     : isInstallation
-    ? "installation"
-    : isUserToServer
-    ? "user-to-server"
-    : "oauth";
+      ? "installation"
+      : isUserToServer
+        ? "user-to-server"
+        : "oauth";
 
   return {
     type: "token",

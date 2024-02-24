@@ -2,8 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "emitDeclarationOnly": false,
-    "noEmit": true,
-    "verbatimModuleSyntax": false
+    "noEmit": true
   },
   "include": ["src/**/*"]
 }

@@ -6,9 +6,9 @@ import type {
   RequestParameters,
   Route,
   Token,
-} from "./types";
+} from "./types.js";
 
-import { withAuthorizationPrefix } from "./with-authorization-prefix";
+import { withAuthorizationPrefix } from "./with-authorization-prefix.js";
 
 export async function hook(
   token: Token,

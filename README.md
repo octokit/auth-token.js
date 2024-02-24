@@ -49,8 +49,7 @@ Node
 Install with <code>npm install @octokit/auth-token</code>
 
 ```js
-const { createTokenAuth } = require("@octokit/auth-token");
-// or: import { createTokenAuth } from "@octokit/auth-token";
+import { createTokenAuth } from "@octokit/auth-token";
 ```
 
 </td></tr>

@@ -1,7 +1,7 @@
 import { request } from "@octokit/request";
-import fetchMock, { MockMatcherFunction } from "fetch-mock";
+import fetchMock, { type MockMatcherFunction } from "fetch-mock";
 
-import { createTokenAuth } from "../src/index";
+import { createTokenAuth } from "../src/index.js";
 
 test("README example", async () => {
   const auth = createTokenAuth("ghp_PersonalAccessToken01245678900000000");
@@ -173,7 +173,7 @@ test('auth.hook(request, "GET /user")', async () => {
   const { hook } = createTokenAuth("ghp_PersonalAccessToken01245678900000000");
   const { data } = await hook(requestMock, "GET /user");
 
-  expect(data).toStrictEqual({ id: 123 });
+  expect({ ...data }).toStrictEqual({ id: 123 });
 });
 
 test("auth.hook() with JWT", async () => {
@@ -204,5 +204,5 @@ test("auth.hook() with JWT", async () => {
   );
   const { data } = await hook(requestMock, "GET /user");
 
-  expect(data).toStrictEqual({ id: 123 });
+  expect({ ...data }).toStrictEqual({ id: 123 });
 });

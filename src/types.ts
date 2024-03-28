@@ -39,3 +39,9 @@ export type Authentication =
   | InstallationTokenAuthentication
   | AppAuthentication
   | UserToServerAuthentication;
+
+export type Types = {
+  StrategyOptions: Token;
+  AuthOptions: never;
+  Authentication: Authentication;
+};

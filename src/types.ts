@@ -14,10 +14,7 @@ export type Route = OctokitTypes.Route;
 
 /** GitHub App server-to-server token
  * @see https://docs.github.com/en/developers/apps/authenticating-with-github-apps#authenticating-as-an-installation */
-export type ActionToken = `ghs_${string}`;
-/** GitHub App server-to-server token
- * @see https://docs.github.com/en/developers/apps/authenticating-with-github-apps#authenticating-as-an-installation */
-export type InstallallationToken = `ghs_${string}`;
+export type ServerToServerToken = `ghs_${string}`;
 export type InstallallationTokenV1 = `v1.${string}`;
 /** Your app can make API requests on behalf of a user. API requests made by an
  * app on behalf of a user will be attributed to that user. For example, if your
@@ -35,7 +32,8 @@ export type InstallationUserToServerToken = `ghu_${string}`;
  * @see https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-json-web-token-jwt-for-a-github-app
  */
 export type JWT = `${string}.${string}.${string}`;
-/** This access token allows you to make requests to the API on a behalf of a user.
+/** This access token allows you to make requests to the API on a behalf of a
+ * user.
  *
  * @see https://docs.github.com/en/developers/apps/authorizing-oauth-apps
  */
@@ -50,8 +48,7 @@ export type OAuthToken = `gho_${string}`;
 export type PersonalAccessToken = `ghp_${string}`;
 
 export type Token =
-  | ActionToken
-  | InstallallationToken
+  | ServerToServerToken
   | InstallallationTokenV1
   | InstallationUserToServerToken
   | JWT

@@ -12,6 +12,20 @@ export type RequestParameters = OctokitTypes.RequestParameters;
 export type RequestInterface = OctokitTypes.RequestInterface;
 export type Route = OctokitTypes.Route;
 
+export type ActionToken = `ghs_${string}`;
+export type InstallallationToken = `ghs_${string}`;
+export type InstallallationTokenV1 = `v1.${string}`;
+export type InstallationUserToServerToken = `ghu_${string}`;
+export type OAuthToken = `${string}.${string}.${string}`;
+/**
+ * Personal access tokens are an alternative to using passwords for
+ * authentication to GitHub when using the [GitHub API](https://docs.github.com/en/rest/overview/authenticating-to-the-rest-api)
+ * or the [command line](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#using-a-personal-access-token-on-the-command-line).
+ *
+ * @see https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+ */
+export type PersonalAccessToken = `ghp_${string}`;
+
 export type Token =
   | PersonalAccessToken
   | InstallallationTokenV1
@@ -19,13 +33,6 @@ export type Token =
   | ActionToken
   | InstallationUserToServerToken
   | OAuthToken;
-
-export type ActionToken = `ghs_${string}`;
-export type InstallallationToken = `ghs_${string}`;
-export type InstallallationTokenV1 = `v1.${string}`;
-export type InstallationUserToServerToken = `ghu_${string}`;
-export type OAuthToken = `${string}.${string}.${string}`;
-export type PersonalAccessToken = `ghp_${string}`;
 
 export type BearerToken =
   | `bearer ${Token}`

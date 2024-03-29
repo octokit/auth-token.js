@@ -2,7 +2,7 @@ import type * as OctokitTypes from "@octokit/types";
 
 export type AnyResponse = OctokitTypes.OctokitResponse<any>;
 export type StrategyInterface = OctokitTypes.StrategyInterface<
-  [Token],
+  [Token | BearerToken],
   [],
   Authentication
 >;
@@ -12,7 +12,26 @@ export type RequestParameters = OctokitTypes.RequestParameters;
 export type RequestInterface = OctokitTypes.RequestInterface;
 export type Route = OctokitTypes.Route;
 
-export type Token = string;
+export type Token =
+  | PersonalAccessToken
+  | InstallallationTokenV1
+  | InstallallationToken
+  | ActionToken
+  | InstallationUserToServerToken
+  | OAuthToken;
+
+export type ActionToken = `ghs_${string}`;
+export type InstallallationToken = `ghs_${string}`;
+export type InstallallationTokenV1 = `v1.${string}`;
+export type InstallationUserToServerToken = `ghu_${string}`;
+export type OAuthToken = `${string}.${string}.${string}`;
+export type PersonalAccessToken = `ghp_${string}`;
+
+export type BearerToken =
+  | `bearer ${Token}`
+  | `Bearer ${Token}`
+  | `token ${Token}`
+  | `Token ${Token}`;
 
 export type OAuthTokenAuthentication = {
   type: "token";

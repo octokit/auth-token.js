@@ -1,6 +1,6 @@
 import esbuild from "esbuild";
-import { copyFile, readFile, writeFile, rm } from "node:fs/promises";
 import { glob } from "glob";
+import { copyFile, readFile, rm, writeFile } from "node:fs/promises";
 
 const sharedOptions = {
   sourcemap: "external",
@@ -68,12 +68,15 @@ async function main() {
             types: "./dist-types/index.d.ts",
             import: "./dist-bundle/index.js",
           },
+          "./types": {
+            types: "./dist-types/types.d.ts",
+          },
         },
         sideEffects: false,
       },
       null,
-      2
-    )
+      2,
+    ),
   );
 }
 main();

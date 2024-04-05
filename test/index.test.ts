@@ -62,6 +62,8 @@ test("User-to-server token (User authentication through app installation)", asyn
 });
 
 test("invalid token", async () => {
+  // @ts-expect-error Argument of type `"whatislove"` is not assignable to
+  // parameter of type`Token | BearerToken`.
   const auth = createTokenAuth("whatislove");
   const authentication = await auth();
 

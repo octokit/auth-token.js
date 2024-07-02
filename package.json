@@ -27,7 +27,6 @@
     "@octokit/request": "^9.0.0",
     "@octokit/tsconfig": "^3.0.0",
     "@octokit/types": "^13.0.0",
-    "@types/fetch-mock": "^7.3.8",
     "@types/jest": "^29.0.0",
     "esbuild": "^0.22.0",
     "fetch-mock": "^10.0.7",

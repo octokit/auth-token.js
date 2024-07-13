@@ -1,15 +1,10 @@
+import { isJWT } from "./is-jwt.js";
 import type { Token, Authentication } from "./types.js";
 
-const REGEX_IS_INSTALLATION_LEGACY = /^v1\./;
-const REGEX_IS_INSTALLATION = /^ghs_/;
-const REGEX_IS_USER_TO_SERVER = /^ghu_/;
-
 export async function auth(token: Token): Promise<Authentication> {
-  const isApp = token.split(/\./).length === 3;
-  const isInstallation =
-    REGEX_IS_INSTALLATION_LEGACY.test(token) ||
-    REGEX_IS_INSTALLATION.test(token);
-  const isUserToServer = REGEX_IS_USER_TO_SERVER.test(token);
+  const isApp = isJWT(token);
+  const isInstallation = token.startsWith("v1.") || token.startsWith("ghs_");
+  const isUserToServer = token.startsWith("ghu_");
 
   const tokenType = isApp
     ? "app"
@@ -21,7 +16,7 @@ export async function auth(token: Token): Promise<Authentication> {
 
   return {
     type: "token",
-    token: token,
+    token,
     tokenType,
   };
 }

@@ -156,7 +156,7 @@ test('auth.hook(request, "GET /user")', async () => {
     "user-agent": "test",
   };
 
-  const matchGetUser: MockMatcherFunction = (url, { headers }) => {
+  const matchGetUser: fetchMock.MockMatcherFunction = (url, { headers }) => {
     expect(url).toEqual("https://api.github.com/user");
     expect(headers).toStrictEqual(expectedRequestHeaders);
     return true;
@@ -185,7 +185,7 @@ test("auth.hook() with JWT", async () => {
     "user-agent": "test",
   };
 
-  const matchGetUser: MockMatcherFunction = (url, { headers }) => {
+  const matchGetUser: fetchMock.MockMatcherFunction = (url, { headers }) => {
     expect(url).toEqual("https://api.github.com/user");
     expect(headers).toStrictEqual(expectedRequestHeaders);
     return true;

@@ -29,7 +29,7 @@
     "@octokit/types": "^13.0.0",
     "@vitest/coverage-v8": "^2.0.2",
     "esbuild": "^0.23.0",
-    "fetch-mock": "^10.0.7",
+    "fetch-mock": "^11.0.0",
     "glob": "^11.0.0",
     "prettier": "3.3.3",
     "semantic-release": "^24.0.0",

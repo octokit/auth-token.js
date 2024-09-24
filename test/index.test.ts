@@ -1,5 +1,5 @@
 import { request } from "@octokit/request";
-import fetchMock, { type MockMatcherFunction } from "fetch-mock";
+import fetchMock from "fetch-mock";
 import { test, expect } from "vitest";
 
 import { createTokenAuth } from "../src/index.js";

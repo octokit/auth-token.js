@@ -1,5 +1,6 @@
 import { request } from "@octokit/request";
-import fetchMock, { type MockMatcherFunction } from "fetch-mock";
+import fetchMock from "fetch-mock";
+import { test, expect } from "vitest";
 
 import { createTokenAuth } from "../src/index.js";
 
@@ -155,7 +156,7 @@ test('auth.hook(request, "GET /user")', async () => {
     "user-agent": "test",
   };
 
-  const matchGetUser: MockMatcherFunction = (url, { headers }) => {
+  const matchGetUser: fetchMock.MockMatcherFunction = (url, { headers }) => {
     expect(url).toEqual("https://api.github.com/user");
     expect(headers).toStrictEqual(expectedRequestHeaders);
     return true;
@@ -184,7 +185,7 @@ test("auth.hook() with JWT", async () => {
     "user-agent": "test",
   };
 
-  const matchGetUser: MockMatcherFunction = (url, { headers }) => {
+  const matchGetUser: fetchMock.MockMatcherFunction = (url, { headers }) => {
     expect(url).toEqual("https://api.github.com/user");
     expect(headers).toStrictEqual(expectedRequestHeaders);
     return true;

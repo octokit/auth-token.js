@@ -156,18 +156,21 @@ test('auth.hook(request, "GET /user")', async () => {
     "user-agent": "test",
   };
 
-  const matchGetUser: fetchMock.MockMatcherFunction = (url, { headers }) => {
-    expect(url).toEqual("https://api.github.com/user");
-    expect(headers).toStrictEqual(expectedRequestHeaders);
-    return true;
-  };
+  const mock = fetchMock.createInstance().getOnce(
+    ({ url, options: { headers } }) => {
+      expect(url).toEqual("https://api.github.com/user");
+      expect(headers).toStrictEqual(expectedRequestHeaders);
+      return true;
+    },
+    { id: 123 },
+  );
 
   const requestMock = request.defaults({
     headers: {
       "user-agent": "test",
     },
     request: {
-      fetch: fetchMock.sandbox().getOnce(matchGetUser, { id: 123 }),
+      fetch: mock.fetchHandler,
     },
   });
 
@@ -185,18 +188,21 @@ test("auth.hook() with JWT", async () => {
     "user-agent": "test",
   };
 
-  const matchGetUser: fetchMock.MockMatcherFunction = (url, { headers }) => {
-    expect(url).toEqual("https://api.github.com/user");
-    expect(headers).toStrictEqual(expectedRequestHeaders);
-    return true;
-  };
+  const mock = fetchMock.createInstance().getOnce(
+    ({ url, options: { headers } }) => {
+      expect(url).toEqual("https://api.github.com/user");
+      expect(headers).toStrictEqual(expectedRequestHeaders);
+      return true;
+    },
+    { id: 123 },
+  );
 
   const requestMock = request.defaults({
     headers: {
       "user-agent": "test",
     },
     request: {
-      fetch: fetchMock.sandbox().getOnce(matchGetUser, { id: 123 }),
+      fetch: mock.fetchHandler,
     },
   });
 

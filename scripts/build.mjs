@@ -70,13 +70,13 @@ async function main() {
           },
           "./types": {
             types: "./dist-types/index.d.ts",
-          }
+          },
         },
         sideEffects: false,
       },
       null,
-      2
-    )
+      2,
+    ),
   );
 }
 main();

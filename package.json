@@ -24,7 +24,7 @@
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
   "devDependencies": {
-    "@octokit/request": "^9.0.0",
+    "@octokit/request": "^10.0.2",
     "@octokit/tsconfig": "^4.0.0",
     "@octokit/types": "^14.0.0",
     "@vitest/coverage-v8": "^3.0.0",

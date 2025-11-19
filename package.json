@@ -28,7 +28,7 @@
     "@octokit/tsconfig": "^4.0.0",
     "@octokit/types": "^16.0.0",
     "@vitest/coverage-v8": "^4.0.0",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.27.0",
     "fetch-mock": "^12.0.0",
     "prettier": "3.5.3",
     "tinyglobby": "^0.2.15",

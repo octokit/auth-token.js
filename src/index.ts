@@ -24,6 +24,6 @@ export const createTokenAuth: StrategyInterface = function createTokenAuth(
   token = token.replace(/^(token|bearer) +/i, "");
 
   return Object.assign(auth.bind(null, token), {
-    hook: hook.bind(null, token)
+    hook: hook.bind(null, token),
   });
 };

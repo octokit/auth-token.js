@@ -29,7 +29,13 @@ export type AppAuthentication = {
   tokenType: "app";
   token: Token;
 };
+export type UserToServerAuthentication = {
+  type: "token";
+  tokenType: "user-to-server";
+  token: Token;
+};
 export type Authentication =
   | OAuthTokenAuthentication
   | InstallationTokenAuthentication
-  | AppAuthentication;
+  | AppAuthentication
+  | UserToServerAuthentication;

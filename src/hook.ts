@@ -5,7 +5,7 @@ import {
   RequestInterface,
   RequestParameters,
   Route,
-  Token
+  Token,
 } from "./types";
 
 import { withAuthorizationPrefix } from "./with-authorization-prefix";
